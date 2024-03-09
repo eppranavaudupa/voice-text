@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<textarea name="" id="convertText" cols="30" rows="10"></textarea>
+<button id="converter">Voice to Text</button>
+<script>
+const btn = document.getElementById("converter");
+btn.addEventListener("click", () => {
+    const speech = true;
+    if (speech) {
+        // Check if browser supports speech recognition
+        if ('webkitSpeechRecognition' in window) {
+            const recognition = new webkitSpeechRecognition();
+            recognition.interimResults = true;
+                recognition.addEventListener("result",e=>{
+                    const transcript=Array.from(e.results)
+                    .map(result=>result[0])
+                    .map(result=>result.transcript)
+                    const textarea=document.getElementById("convertText");
+                    textarea.innerHTML=transcript;
+                })
+            recognition.onresult = (event) => {
+                const transcript = Array.from(event.results)
+                    .map(result => result[0].transcript)
+                    .join('');
+                console.log(transcript);
+                // You can do something with the transcript here, like updating the textarea
+                document.getElementById("convertText").value = transcript;
+            };
+
+            // Start speech recognition
+            recognition.start();
+        } else {
+            alert('Speech recognition is not supported in this browser.');
+        }
+    }
+});
+</script>
+</body>
+</html>

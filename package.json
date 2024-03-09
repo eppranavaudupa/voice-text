@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "@google-cloud/speech": "^6.3.0",
+    "@google/generative-ai": "^0.2.1",
+    "deepspeech": "^0.9.3",
+    "express": "^4.18.2",
+    "gtts": "^0.2.1",
+    "node": "^21.6.2"
+  },
+  "name": "robot",
+  "version": "1.0.0",
+  "main": "backend.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "pranava",
+  "license": "ISC",
+  "description": ""
+}
